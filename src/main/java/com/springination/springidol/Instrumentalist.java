@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 @Configurable ("pianist")
-@EnableAspectJAutoProxy
+
 public class Instrumentalist implements Performer{
     public String song;
     public Instrument instrument;

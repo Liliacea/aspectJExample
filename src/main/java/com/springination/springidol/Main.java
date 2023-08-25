@@ -13,6 +13,6 @@ public class Main {
         Instrumentalist pianist = new Instrumentalist();
 
         pianist.perform();
-      //  ctx.close();
+       ctx.close();
     }
 }
