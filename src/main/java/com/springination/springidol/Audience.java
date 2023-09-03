@@ -1,6 +1,7 @@
 package com.springination.springidol;
 
 
+import org.springframework.aop.aspectj.MethodInvocationProceedingJoinPoint;
 
 public class Audience implements Performer {
     public void takeSeats() { // Перед выступлением
@@ -15,12 +16,12 @@ public class Audience implements Performer {
     public void demandRefund() { // После неудачного выступления
         System.out.println("Boo! We want our money back!");
     }
-   /* public void watchPerformance(ProceedingJoinPoint proceedingJoinPoint){
+   public void watchPerformance(MethodInvocationProceedingJoinPoint proceedingJoinPoint){
         try{
             System.out.println("The audience is taking their seats.");
             System.out.println("The audience is turning off their cellphones");
             long startTime = System.currentTimeMillis();
-            proceedingJoinPoint.proceed();
+           // proceedingJoinPoint.proceed();
             long endTime = System.currentTimeMillis();
             System.out.println("time of perf " + (endTime-startTime));
             System.out.println("CLAP CLAP CLAP CLAP CLAP");
@@ -32,7 +33,7 @@ public class Audience implements Performer {
     }
 
 
-    */
+
     @Override
     public void perform() {
         System.out.println("hhhhhh");
