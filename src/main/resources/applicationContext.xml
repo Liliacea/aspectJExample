@@ -2,35 +2,76 @@
 
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:p="http://www.springframework.org/schema/p"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
-       xmlns:aop="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/c"
 
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-       http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/aop
+        https://www.springframework.org/schema/aop/spring-aop.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd"
        default-init-method="turnOnLights"
        default-destroy-method="turnOffLights">
-    <aop:spring-configured />
 
-    <bean id="pianist"
-
-    class="com.springination.springidol.Instrumentalist"
-    abstract="true">
-    <property name="song" value="Chopsticks" />
-    <property name="instrument">
-        <bean class="com.springination.springidol.Piano" />
-    </property>
-</bean>
+    <bean id="audience"
+          class="com.springination.springidol.Audience" />
 
 
+    <aop:config>
+        <aop:aspect id = "audience" ref="audience">
+            <aop:pointcut id="performance" expression=
+                    "execution(* com.springination.springidol.Performer.perform(..))"
+            /> <!-- Определение среза множества точек сопряжения -->
+            <aop:before
+                    pointcut-ref="performance"
+                    method="takeSeats" />
+            <!-- Ссылка на именованный срез -->
+            <aop:before
+                    pointcut-ref="performance"
 
-    <bean id="Saxophone"
-          class="com.springination.springidol.Saxophone">
+                    method="turnOffCellPhones" />
+            <aop:after-returning
+                    pointcut-ref="performance"
+                    method="applaud" /><!-- Ссылка на именованный срез -->
+            <aop:after-throwing
+                    pointcut-ref="performance"
+                    method="demandRefund" /><!-- Ссылка на именованный срез -->
+        </aop:aspect>
+    </aop:config>
 
-    </bean>
-    <bean id="Piano"
-          class="com.springination.springidol.Piano">
+    <aop:config>
+        <aop:aspect ref="audience">
+            <aop:pointcut id="performance2" expression=
+                    "execution(* com.springination.springidol.Performer.perform(..))"
+            />
+            <!-- Совет, выполняемый и до, и после -->
+            <aop:around
+                    pointcut-ref="performance2"
+                    method="watchPerformance" />
+        </aop:aspect>
+    </aop:config>
 
-    </bean>
+
+    <bean id="magician"
+          class="com.springination.springidol.Magician"/>
+    <bean id = "volunteer"
+      class="com.springination.springidol.Volunteer"/>
+
+    <aop:config>
+        <aop:aspect ref="magician">
+            <aop:pointcut id="thinking"
+                          expression="execution(*
+com.springination.springidol.Thinker.thinkSomething(String))
+and args(thoughts)" />
+            <aop:before
+                    pointcut-ref="thinking"
+                    method="interceptThoughts"
+                    arg-names="thoughts" />
+        </aop:aspect>
+    </aop:config>
 
 </beans>
 

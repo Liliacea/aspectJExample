@@ -6,13 +6,15 @@ public class Main {
     public static void main(String[] args) {
         ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext(
                 "applicationContext.xml");
-      // Performer performer = (Performer) ctx.getBean("kenny");
+       Volunteer volunteer = new Volunteer();
+        Magician magician = (Magician) ctx.getBean("magician");
+        volunteer.thinkSomething("AAAAAAAAAAAAAAAAAAAAAAa");
+        String t = magician.getThoughs();
+        System.out.println(t);
 
-       // performer.perform();
 
-        Instrumentalist pianist = new Instrumentalist();
 
-        pianist.perform();
+
        ctx.close();
     }
 }

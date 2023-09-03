@@ -3,7 +3,7 @@ package com.springination.springidol;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
-@Configurable ("pianist")
+
 
 public class Instrumentalist implements Performer{
     public String song;
