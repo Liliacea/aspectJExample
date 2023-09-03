@@ -1,6 +1,6 @@
 package com.springination.springidol;
 
-import org.aspectj.lang.ProceedingJoinPoint;
+
 
 public class Audience implements Performer {
     public void takeSeats() { // Перед выступлением
@@ -15,7 +15,7 @@ public class Audience implements Performer {
     public void demandRefund() { // После неудачного выступления
         System.out.println("Boo! We want our money back!");
     }
-    public void watchPerformance(ProceedingJoinPoint proceedingJoinPoint){
+   /* public void watchPerformance(ProceedingJoinPoint proceedingJoinPoint){
         try{
             System.out.println("The audience is taking their seats.");
             System.out.println("The audience is turning off their cellphones");
@@ -27,8 +27,12 @@ public class Audience implements Performer {
         } catch (Throwable e) {
             System.out.println("Boo! We want our money back!");
         }
+
+
     }
 
+
+    */
     @Override
     public void perform() {
         System.out.println("hhhhhh");

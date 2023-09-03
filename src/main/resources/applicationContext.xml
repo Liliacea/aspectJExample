@@ -16,7 +16,7 @@
        default-init-method="turnOnLights"
        default-destroy-method="turnOffLights">
 
-    <bean id="audience"
+  <!--  <bean id="audience"
           class="com.springination.springidol.Audience" />
 
 
@@ -24,21 +24,21 @@
         <aop:aspect id = "audience" ref="audience">
             <aop:pointcut id="performance" expression=
                     "execution(* com.springination.springidol.Performer.perform(..))"
-            /> <!-- Определение среза множества точек сопряжения -->
+            />
             <aop:before
                     pointcut-ref="performance"
                     method="takeSeats" />
-            <!-- Ссылка на именованный срез -->
+
             <aop:before
                     pointcut-ref="performance"
 
                     method="turnOffCellPhones" />
             <aop:after-returning
                     pointcut-ref="performance"
-                    method="applaud" /><!-- Ссылка на именованный срез -->
+                    method="applaud" />
             <aop:after-throwing
                     pointcut-ref="performance"
-                    method="demandRefund" /><!-- Ссылка на именованный срез -->
+                    method="demandRefund" />
         </aop:aspect>
     </aop:config>
 
@@ -47,12 +47,12 @@
             <aop:pointcut id="performance2" expression=
                     "execution(* com.springination.springidol.Performer.perform(..))"
             />
-            <!-- Совет, выполняемый и до, и после -->
+
             <aop:around
                     pointcut-ref="performance2"
                     method="watchPerformance" />
         </aop:aspect>
-    </aop:config>
+    </aop:config> -->
 
 
     <bean id="magician"
