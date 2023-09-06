@@ -13,33 +13,33 @@
             http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
 
     <bean id="smb"
-          class="com.spinginaction.springidol.SmbPerforn" />
+          class="springidol.SmbPerforn" />
 
     <bean id = "audience"
-          class="com.spinginaction.springidol.Audience"/>
+          class="springidol.Audience"/>
 
    <bean id="magician"
-         class="com.spinginaction.springidol.Magician"/>
+         class="springidol.Magician"/>
     <bean id="volunteer"
-          class="com.spinginaction.springidol.Volunteer"/>
+          class="springidol.Volunteer"/>
 
-    <aop:config>
+  <!--  <aop:config>
         <aop:aspect ref="magician">
             <aop:pointcut id="thinking"
                           expression="execution(*
-com.spinginaction.springidol.Thinker.thinkOfSomething(String))
+springidol.Thinker.thinkOfSomething(String))
 and args(thoughts)" />
             <aop:before
                     pointcut-ref="thinking"
                     method="interceptThoughts"
                     arg-names="thoughts" />
         </aop:aspect>
-    </aop:config>
+    </aop:config> -->
 
  <!--   <aop:config>
         <aop:aspect ref="audience">
             <aop:pointcut id="performance2" expression=
-                    "execution(* com.spinginaction.springidol.Performer.perform())"
+                    "execution(* springidol.Performer.perform())"
             />
 
             <aop:around
@@ -50,10 +50,10 @@ and args(thoughts)" />
 
     </aop:config> -->
 
-  <!--  <aop:config>
+    <aop:config>
         <aop:aspect ref="audience">
             <aop:pointcut id="performance" expression=
-                    "execution(* com.spinginaction.springidol.Performer.perform())"/>
+                    "execution(* springidol.Performer.perform())"/>
           <aop:before
             pointcut-ref="performance"
                         method="takeSeats" />
@@ -64,6 +64,6 @@ and args(thoughts)" />
             <aop:after-throwing pointcut-ref="performance"
                                 method="demandRefund" />
         </aop:aspect>
-    </aop:config> -->
+    </aop:config>
 
 </beans>
