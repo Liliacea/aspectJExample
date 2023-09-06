@@ -1,9 +1,9 @@
-package com.springination.springidol;
+package springidol;
 
 
-import org.springframework.aop.aspectj.MethodInvocationProceedingJoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
 
-public class Audience implements Performer {
+public class Audience  {
     public void takeSeats() { // Перед выступлением
         System.out.println("The audience is taking their seats.");
     }
@@ -16,7 +16,7 @@ public class Audience implements Performer {
     public void demandRefund() { // После неудачного выступления
         System.out.println("Boo! We want our money back!");
     }
-   public void watchPerformance(MethodInvocationProceedingJoinPoint proceedingJoinPoint){
+   public void watchPerformance(ProceedingJoinPoint proceedingJoinPoint){
         try{
             System.out.println("The audience is taking their seats.");
             System.out.println("The audience is turning off their cellphones");
@@ -34,8 +34,5 @@ public class Audience implements Performer {
 
 
 
-    @Override
-    public void perform() {
-        System.out.println("hhhhhh");
-    }
+
 }

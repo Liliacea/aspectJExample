@@ -1,6 +1,5 @@
-package com.springination.springidol;
-
+package springidol;
 public interface MindReader {
     void interceptThoughts(String thoughts);
-    String getThoughs();
+    String getThoughts();
 }

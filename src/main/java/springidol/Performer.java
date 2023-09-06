@@ -1,4 +1,4 @@
-package com.springination.springidol;
+package springidol;
 
 public interface Performer {
     void perform();
